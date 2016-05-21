@@ -1,0 +1,1 @@
+webpackHotUpdate(0,[function(e,t,n){"use strict";function u(e){return e&&e.__esModule?e:{"default":e}}var d=n(1),r=u(d),a=n(2),o=u(a),l=n(!function(){var e=new Error('Cannot find module "./app/index"');throw e.code="MODULE_NOT_FOUND",e}()),c=u(l);o["default"].render(r["default"].createElement(c["default"],null),document.getElementById("react-mount"))}]);

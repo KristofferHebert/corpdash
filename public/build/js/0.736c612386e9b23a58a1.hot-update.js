@@ -1,0 +1,1 @@
+webpackHotUpdate(0,{6:function(e,t,r){"use strict";function u(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=r(1),o=u(a),d=r(2),l=r(8),n=u(l),s=o["default"].createClass({displayName:"App",render:function(){return o["default"].createElement(d.Router,{routes:n["default"],history:d.browserHistory})}});t["default"]=s}});

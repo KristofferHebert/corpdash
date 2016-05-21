@@ -4,9 +4,7 @@ const path = require('path')
 const root = path.resolve('./')
 
 module.exports = {
-  entry: {
-    app: root + '/src/js/app',
-  },
+  entry: root + '/src/js/app.js',
   output: {
     path: root + '/public/build/js/',
     filename: 'bundle.min.js'
@@ -14,7 +12,8 @@ module.exports = {
   devtools: 'eval',
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    'react-router': 'ReactRouter'
   },
   module: {
     loaders: [
