@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
+    "dev": "pm2-dev server.js",
     "compile": "webpack --config webpack.config.js -p -w"
   },
   "keywords": [
@@ -14,6 +15,7 @@
   "author": "Kristoffer Hebert",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.13.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0"

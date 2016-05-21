@@ -1,4 +1,4 @@
-// inspired by https://github.com/reactjs/react-router/blob/master/examples/active-links/app.js
+// Inspired by https://github.com/reactjs/react-router/blob/master/examples/active-links/app.js
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
@@ -10,9 +10,9 @@ import AllDataPage from './alldata/index'
 
 const Routes = (
   <Route path='/' component={Wrapper}>
-    <IndexRoute component={GeoSpatialPage} />
-    <Route path='/key-metrics' component={KeyMetricsPage} />
-    <Route path='/all-data' component={AllDataPage} />
+    <IndexRoute name='/' component={GeoSpatialPage} />
+    <Route name='key-metrics' path='/key-metrics' component={KeyMetricsPage} />
+    <Route name='all-data' path='/all-data' component={AllDataPage} />
   </Route>
 )
 

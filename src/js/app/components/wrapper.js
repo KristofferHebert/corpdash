@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 const Wrapper = React.createClass({
-  render(){
+  render () {
     return (
       <main>
         <nav>

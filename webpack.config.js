@@ -1,5 +1,4 @@
 'use strict'
-const webpack = require('webpack')
 const path = require('path')
 const root = path.resolve('./')
 
@@ -27,8 +26,5 @@ module.exports = {
       }
     ],
     noParse: ['react']
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  }
 }
