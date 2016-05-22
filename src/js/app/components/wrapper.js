@@ -5,15 +5,31 @@ const Wrapper = React.createClass({
   render () {
     return (
       <main>
-        <nav>
-          <ul>
-            <li><Link activeClassName='active' to='/'>Geospatial</Link></li>
-            <li><Link activeClassName='active' to='/key-metrics'>Key Metrics</Link></li>
-            <li><Link activeClassName='active' to='/all-data'>All Data</Link></li>
-          </ul>
+        <nav className='navbar navbar-default' role='banner'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-md-9 col-md-offset-2'>
+                <a href='/' className='navbar-brand'>CorpDash</a>
+                <ul className='nav navbar-nav navbar-right' role='navigation'>
+                  <li><Link activeClassName='active' to='/'>Geospatial</Link></li>
+                  <li><Link activeClassName='active' to='/key-metrics'>Key Metrics</Link></li>
+                  <li><Link activeClassName='active' to='/all-data'>All Data</Link></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </nav>
-        {this.props.children}
-        <footer>CorpDash - 2016</footer>
+        <section className='container content' role='main'>
+          <section className='row'>
+            <div className='col-md-9 col-md-offset-2'>
+              {this.props.children}
+            </div>
+          </section>
+        </section>
+        <footer className='text-center'>
+          <hr />
+          <p>CorpDash - 2016</p>
+        </footer>
       </main>
     )
   }

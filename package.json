@@ -15,10 +15,12 @@
   "author": "Kristoffer Hebert",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.6.2",
     "express": "^4.13.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "react-router": "^2.4.0"
+    "react-router": "^2.4.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
