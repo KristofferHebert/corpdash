@@ -19,17 +19,14 @@ const Wrapper = React.createClass({
             </div>
           </div>
         </nav>
-        <section className='container content' role='main'>
+        <section className='container' role='main'>
           <section className='row'>
             <div className='col-md-9 col-md-offset-2'>
               {this.props.children}
             </div>
           </section>
         </section>
-        <footer className='text-center'>
-          <hr />
-          <p>CorpDash - 2016</p>
-        </footer>
+        <footer className='text-center'><p>CorpDash - 2016</p></footer>
       </main>
     )
   }

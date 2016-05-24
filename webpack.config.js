@@ -9,11 +9,11 @@ module.exports = {
     filename: 'bundle.min.js'
   },
   devtools: 'eval',
-  // externals: {
-  //   react: 'React',
-  //   'react-dom': 'ReactDOM',
-  //   'react-router': 'ReactRouter'
-  // },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    'react-router': 'ReactRouter'
+  },
   module: {
     loaders: [
       {

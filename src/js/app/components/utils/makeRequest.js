@@ -13,8 +13,10 @@ function makeRequest (endpoint, userOptions) {
   }
   return fetch(endpoint, options)
   .then((response) => {
-    console.log(response.headers.get('content-type'))
-    return response.json()
+    if (response.headers.get('content-type') === 'text/json') {
+      return response.json()
+    }
+    return response.text()
   }).then((data) => {
     return data
   }).catch((ex) => {

@@ -1,3 +1,20 @@
 .content {
   min-height: 40em;
 }
+
+.table td {
+  padding: 1em;
+  line-height: 1.4em;
+  vertical-align: top;
+  border: 1px solid #ddd;
+}
+
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  border: 0;
+  border-bottom-width: 0;
+}
+
+.th-header-description {
+    width: 250px;
+    display: block;
+}

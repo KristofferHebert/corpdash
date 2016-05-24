@@ -11,8 +11,8 @@ import AllDataPage from './alldata/index'
 const Routes = (
   <Route path='/' component={Wrapper}>
     <IndexRoute name='/' component={GeoSpatialPage} />
-    <Route name='key-metrics' path='/key-metrics' component={KeyMetricsPage} />
-    <Route name='all-data' path='/all-data' component={AllDataPage} />
+    <Route name='key-metrics' path='key-metrics' component={KeyMetricsPage} />
+    <Route name='all-data' path='all-data' component={AllDataPage} />
   </Route>
 )
 

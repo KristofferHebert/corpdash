@@ -1,12 +1,12 @@
 import React from 'react'
-import { Router, browserHistory } from 'react-router'
+import { Router, hashHistory } from 'react-router'
 
 import Routes from './router'
 
 const App = React.createClass({
-  render(){
+  render () {
     return (
-      <Router routes={Routes} history={browserHistory} />
+      <Router routes={Routes} history={hashHistory}/>
     )
   }
 })

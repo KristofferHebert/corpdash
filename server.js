@@ -9,9 +9,10 @@ const app = express()
 app.use(express.static('public'))
 app.use(compression())
 
-app.get('/', (req, res) => {
-  res.sendfile(path.join(__dirname, '/public/index.html'))
+app.get('/', function (req, res) {
+  res.sendFile('index.html')
 })
+
 app.listen(PORT, () => {
   console.log('listing on', PORT)
 })
