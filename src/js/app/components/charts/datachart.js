@@ -23,27 +23,51 @@ const DataChart = React.createClass({
       </thead>
     )
   },
-  renderRow (row) {
-    const TDS = row.map((td, index) => {
-      return (
-        <td key={Date.now() + index} className='text-center'>
-          {td}
-        </td>
-      )
-    })
+  parseDate (datestring) {
+    if (datestring) {
+      return new Date(datestring).toDateString()
+    }
+    return null
+  },
+  renderRow (row, i) {
     return (
-      <tr>
-        {TDS}
-      </tr>
+      <tbody key={Date.now() + i}>
+        <tr>
+          <td className='text-center'>
+            {row.id}
+          </td>
+          <td className='text-center'>
+            {row.customer_name}
+          </td>
+          <td className='text-center'>
+            {row.customer_email}
+          </td>
+          <td className='text-center'>
+            {row.submission}
+          </td>
+          <td className='text-center'>
+            {row.description}
+          </td>
+          <td className='text-center'>
+            {row.open}
+          </td>
+          <td className='text-center'>
+            {this.parseDate(row.closed)}
+          </td>
+          <td className='text-center'>
+            {row.employee_name}
+          </td>
+        </tr>
+      </tbody>
     )
   },
   renderDataChart () {
     const chart = null
     self = this
-    if (this.props.data.length != 0) {
-      const chart = this.props.data.slice(1)
-      return chart.map((row) => {
-        return self.renderRow(row)
+    if (this.props.data.length !== 0) {
+      const chart = this.props.data
+      return chart.map((row, i) => {
+        return self.renderRow(row, i)
       })
     }
     return chart
@@ -51,7 +75,7 @@ const DataChart = React.createClass({
   render () {
     return (
         <table className='table table-bordered'>
-          {this.renderDataChartNav(this.props.data[0])}
+          {this.renderDataChartNav(this.props.nav)}
           {this.renderDataChart()}
         </table>
     )
