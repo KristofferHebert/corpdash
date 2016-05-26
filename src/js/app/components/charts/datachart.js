@@ -43,7 +43,7 @@ const DataChart = React.createClass({
             {row.customer_email}
           </td>
           <td className='text-center'>
-            {row.submission}
+            {this.parseDate(row.submission)}
           </td>
           <td className='text-center'>
             {row.description}
