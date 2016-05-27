@@ -7,14 +7,10 @@
   line-height: 1.4em;
   vertical-align: top;
   border: 1px solid #ddd;
+  font-size: .9em;
 }
 
 .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
   border: 0;
   border-bottom-width: 0;
-}
-
-.th-header-description {
-    width: 250px;
-    display: block;
 }

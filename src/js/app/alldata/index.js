@@ -24,7 +24,7 @@ const AllDataPage = React.createClass({
   applyFilter(filter, data){
     if(filter !== 'none' && this.state.filters.indexOf('filter')){
       return _.filter(data, (d) => {
-        return d[filter] === true
+        return d[filter]
       })
     } else {
       return data
@@ -97,7 +97,8 @@ const AllDataPage = React.createClass({
           nav={this.state.nav}
           toggleSort={this.toggleSort}
           toggleFilter={this.toggleFilter}
-          filters={this.state.filters}/>
+          filters={this.state.filters}
+          currentFilter={this.state.currentFilter} />
       </section>
     )
   }
