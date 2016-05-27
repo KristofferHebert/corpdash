@@ -1,4 +1,7 @@
+'use strict'
+
 import React from 'react'
+import _ from 'lodash'
 
 import makeRequest from '../components/utils/makeRequest'
 import DataChart from '../components/charts/datachart'
@@ -13,8 +16,24 @@ const AllDataPage = React.createClass({
       console.log(sort)
     }
   },
+  toggleFilter (e){
+    let updatedFilter = this.state
+    updatedFilter.currentFilter = e.target.value
+    this.setState(updatedFilter)
+  },
+  applyFilter(filter, data){
+    if(filter !== 'none' && this.state.filters.indexOf('filter')){
+      return _.filter(data, (d) => {
+        return d[filter] === true
+      })
+    } else {
+      return data
+    }
+  },
   getInitialState () {
     return {
+      currentFilter: 'none',
+      filters: ['none', 'open', 'closed'],
       data: [
         {
           'id': null,
@@ -74,9 +93,11 @@ const AllDataPage = React.createClass({
       <section>
         <h3>All Data</h3>
         <DataChart
-          data={this.state.data}
+          data={this.applyFilter(this.state.currentFilter, this.state.data)}
           nav={this.state.nav}
-          toggleSort={this.toggleSort} />
+          toggleSort={this.toggleSort}
+          toggleFilter={this.toggleFilter}
+          filters={this.state.filters}/>
       </section>
     )
   }

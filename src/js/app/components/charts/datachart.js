@@ -1,8 +1,24 @@
+'use strict'
+
 import React from 'react'
 
 const DataChart = React.createClass({
-  toggleFilter (e) {
-    console.log(e)
+  renderToggleFilter () {
+    const options = this.props.filters.map((filter, i) => {
+      return (
+        <option value={filter} key={new Date() + i}>{filter}</option>
+      )
+    })
+    return (
+      <form className='form-inline pull-right toggle-filter-container'>
+        <fieldset className='form-group'>
+          <label htmlFor='toggleFilter'>Filter by:</label>
+            <select id='toggleFilter' className='form-control' onChange={this.props.toggleFilter}>
+              {options}
+            </select>
+        </fieldset>
+      </form>
+    )
   },
   renderDataChartNav (navArray) {
     const DataChartNav = navArray.map((item, i) => {
@@ -74,10 +90,13 @@ const DataChart = React.createClass({
   },
   render () {
     return (
-        <table className='table table-bordered'>
-          {this.renderDataChartNav(this.props.nav)}
-          {this.renderDataChart()}
-        </table>
+        <section>
+          {this.renderToggleFilter()}
+          <table className='table table-bordered'>
+            {this.renderDataChartNav(this.props.nav)}
+            {this.renderDataChart()}
+          </table>
+        </section>
     )
   }
 })
