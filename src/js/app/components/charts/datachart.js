@@ -10,14 +10,21 @@ const DataChart = React.createClass({
       )
     })
     return (
-      <form className='form-inline pull-right toggle-filter-container'>
-        <fieldset className='form-group'>
-          <label htmlFor='toggleFilter'>Filter by:</label>
-            <select id='toggleFilter' className='form-control' onChange={this.props.toggleFilter} value={this.props.currentFilter}>
-              {options}
-            </select>
-        </fieldset>
-      </form>
+      <section className='row'>
+      <div className='col-md-9'>
+        <h3>All Data</h3>
+      </div>
+      <aside className='col-md-3'>
+        <form className='form-inline pull-right toggle-filter-container'>
+          <fieldset className='form-group'>
+            <label htmlFor='toggleFilter'>Filter by:</label>
+              <select id='toggleFilter' className='form-control' onChange={this.props.toggleFilter} value={this.props.currentFilter}>
+                {options}
+              </select>
+          </fieldset>
+        </form>
+      </aside>
+      </section>
     )
   },
   renderDataChartNav (navArray) {

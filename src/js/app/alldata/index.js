@@ -91,7 +91,6 @@ const AllDataPage = React.createClass({
   render () {
     return (
       <section>
-        <h3>All Data</h3>
         <DataChart
           data={this.applyFilter(this.state.currentFilter, this.state.data)}
           nav={this.state.nav}
