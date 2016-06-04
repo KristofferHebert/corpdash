@@ -1,7 +1,4 @@
-'use strict'
-
 import React from 'react'
-import _ from 'lodash'
 
 import makeRequest from '../components/utils/makeRequest'
 import DataChart from '../components/charts/datachart'
@@ -13,18 +10,31 @@ const AllDataPage = React.createClass({
   toggleSort (sort) {
     return (e) => {
       e.preventDefault()
-      console.log(sort)
+      let updatedSort = this.state
+      updatedSort.currentSort = sort
+      this.setState(updatedSort)
     }
   },
-  toggleFilter (e){
+  toggleFilter (e) {
     let updatedFilter = this.state
     updatedFilter.currentFilter = e.target.value
     this.setState(updatedFilter)
   },
-  applyFilter(filter, data){
-    if(filter !== 'none' && this.state.filters.indexOf('filter')){
+  applyFilter (filter, data) {
+    if (filter !== 'none' && this.state.filters.indexOf('filter')) {
       return _.filter(data, (d) => {
-        return d[filter]
+        if (d[filter])
+          return d[filter]
+      })
+    } else {
+      return data
+    }
+  },
+  applySort (sort, data) {
+    if (filter !== 'none' && this.state.filters.indexOf('filter')) {
+      return _.filter(data, (d) => {
+        if (d[filter])
+          return d[filter]
       })
     } else {
       return data
@@ -33,6 +43,7 @@ const AllDataPage = React.createClass({
   getInitialState () {
     return {
       currentFilter: 'none',
+      currentSort: 'none',
       filters: ['none', 'open', 'closed'],
       data: [
         {
@@ -91,13 +102,14 @@ const AllDataPage = React.createClass({
   render () {
     return (
       <section>
-        <DataChart
-          data={this.applyFilter(this.state.currentFilter, this.state.data)}
-          nav={this.state.nav}
-          toggleSort={this.toggleSort}
-          toggleFilter={this.toggleFilter}
-          filters={this.state.filters}
-          currentFilter={this.state.currentFilter} />
+        <h3>All Data</h3>
+          <DataChart
+            data={this.applyFilter(this.state.currentFilter, this.state.data)}
+            nav={this.state.nav}
+            toggleSort={this.toggleSort}
+            toggleFilter={this.toggleFilter}
+            filters={this.state.filters}
+            currentFilter={this.state.currentFilter} />
       </section>
     )
   }
