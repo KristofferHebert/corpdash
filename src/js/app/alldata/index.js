@@ -44,7 +44,7 @@ const AllDataPage = React.createClass({
     return {
       currentFilter: 'none',
       currentSort: 'none',
-      filters: ['none', 'open', 'closed'],
+      filters: ['none', 'closed', 'open'],
       data: [
         {
           'id': null,
