@@ -2,6 +2,7 @@ import React from 'react'
 
 import makeRequest from '../components/utils/makeRequest'
 import DataChart from '../components/charts/datachart'
+import _ from 'lodash'
 
 const AllDataPage = React.createClass({
   componentWillMount () {
@@ -21,7 +22,7 @@ const AllDataPage = React.createClass({
     this.setState(updatedFilter)
   },
   applyFilter (filter, data) {
-    if (filter !== 'none' && this.state.filters.indexOf('filter')) {
+    if (filter !== 'none' && this.state.filters.indexOf(filter)) {
       return _.filter(data, (d) => {
         if (d[filter])
           return d[filter]
@@ -31,10 +32,11 @@ const AllDataPage = React.createClass({
     }
   },
   applySort (sort, data) {
-    if (filter !== 'none' && this.state.filters.indexOf('filter')) {
-      return _.filter(data, (d) => {
-        if (d[filter])
-          return d[filter]
+    if (sort !== 'none' && this.state.sorts.indexOf('sort')) {
+      return _.sort(data, (d) => {
+        if (d[sort]) {
+          return d[sort]
+        }
       })
     } else {
       return data
