@@ -32,9 +32,7 @@ const DataChart = React.createClass({
       <thead className='bg-success'>
         <tr>
           <td className={'text-center th-header-link th-header-' + navArray[0]} colSpan='1'>
-            <a href='#' onClick={this.props.toggleSort(navArray[0])}>
               {navArray[0]}
-            </a>
           </td>
           <td className={'text-center th-header-link th-header-' + navArray[1]} colSpan='1'>
             <a href='#' onClick={this.props.toggleSort(navArray[1])}>
@@ -57,14 +55,10 @@ const DataChart = React.createClass({
             </a>
           </td>
           <td className={'text-center th-header-link th-header-' + navArray[5]}>
-            <a href='#' onClick={this.props.toggleSort(navArray[5])}>
               {navArray[5]}
-            </a>
           </td>
           <td className={'text-center th-header-link th-header-' + navArray[6]}>
-            <a href='#' onClick={this.props.toggleSort(navArray[6])}>
               {navArray[6]}
-            </a>
           </td>
           <td className={'text-center th-header-link th-header-' + navArray[7]}>
             <a href='#' onClick={this.props.toggleSort(navArray[7])}>

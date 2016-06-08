@@ -24,20 +24,19 @@ const AllDataPage = React.createClass({
   applyFilter (filter, data) {
     if (filter !== 'none' && this.state.filters.indexOf(filter)) {
       return _.filter(data, (d) => {
-        if (d[filter])
-          return d[filter]
+        if (filter === 'open') {
+          return d.open == 'true'
+        } else if (filter === 'closed') {
+          return d.closed != ''
+        }
       })
     } else {
       return data
     }
   },
   applySort (sort, data) {
-    if (sort !== 'none' && this.state.sorts.indexOf('sort')) {
-      return _.sort(data, (d) => {
-        if (d[sort]) {
-          return d[sort]
-        }
-      })
+    if (sort !== 'none') {
+      return _.sortBy(data, sort)
     } else {
       return data
     }
@@ -104,9 +103,8 @@ const AllDataPage = React.createClass({
   render () {
     return (
       <section>
-        <h3>All Data</h3>
           <DataChart
-            data={this.applyFilter(this.state.currentFilter, this.state.data)}
+            data={this.applySort(this.state.currentSort, this.applyFilter(this.state.currentFilter, this.state.data))}
             nav={this.state.nav}
             toggleSort={this.toggleSort}
             toggleFilter={this.toggleFilter}

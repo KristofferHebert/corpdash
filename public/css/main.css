@@ -12,4 +12,15 @@
 .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
   border: 0;
   border-bottom-width: 0;
+  padding: 1em 1.4em;
+}
+.table-bordered>thead>tr>td a, .table-bordered>thead>tr>th a {
+  text-decoration: underline;
+  display: block;
+  width:100%;
+}
+
+.table-bordered>thead>tr>td a:hover, .table-bordered>thead>tr>th a:hover {
+  font-weight: bold;
+  text-decoration: none;
 }
