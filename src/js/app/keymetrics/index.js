@@ -1,10 +1,51 @@
 import React from 'react'
+import OpenIssues from '../components/charts/openissues'
+import makeRequest from '../components/utils/makeRequest'
 
 const KeyMetricsPage = React.createClass({
-  render(){
+  getInitialState () {
+    return {
+      data: []
+    }
+  },
+  componentWillMount () {
+    this.getData('data.csv')
+  },
+  csvToCollection (csv) {
+    return csv.splice(1)
+      .map((r) => {
+        return {
+          'id': r[0],
+          'customer_name': r[1],
+          'customer_email': r[2],
+          'submission': r[3],
+          'description': r[4],
+          'open': r[5],
+          'closed': r[6],
+          'employee_name': r[7]
+        }
+      })
+  },
+  getData (url) {
+    let options = {
+      method: 'get'
+    }
+    var self = this
+
+    makeRequest(url, options)
+    .then((response) => {
+      const csv = Papa.parse(response)
+      self.setState({data: self.csvToCollection(csv.data)})
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  },
+  render () {
     return (
       <section>
         <h3>Keymetrics</h3>
+        <OpenIssues data={this.state.data} />
       </section>
     )
   }

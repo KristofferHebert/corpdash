@@ -30,7 +30,7 @@ const GeoSpatialPage = React.createClass({
     return (
       <section>
         <h3>Geospatial</h3>
-        <GeoSpatialChart data={this.state.data} />
+        <GeoSpatialChart data={this.state.data} width={960} height={500}/>
       </section>
     )
   }
