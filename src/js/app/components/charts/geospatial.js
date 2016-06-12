@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import D3 from 'd3'
+import d3 from 'd3'
 import topojson from 'topojson'
 
 // inspiration from http://bl.ocks.org/d3noob/5193723
@@ -12,7 +12,7 @@ const GeoSpatialChart = React.createClass({
         .scale(200)
         .rotate([-180, 0])
 
-    var svg = d3.select('body').append('svg')
+    var svg = d3.append('svg')
         .attr('width', width)
         .attr('height', height)
 
@@ -22,22 +22,22 @@ const GeoSpatialChart = React.createClass({
     var g = svg.append('g')
 
     // load and display the World
-    d3.json('world.json', (error, topology) => {
+    d3.json('world.json', function (error, topology) {
 
     // load and display the cities
-      d3.json('geospatial.json', (error, data) => {
+      d3.csv('cities.csv', function (error, data) {
         g.selectAll('circle')
            .data(data)
            .enter()
            .append('a')
-    				  .attr('xlink:href', (d) => {
-      return 'https://www.google.com/search?q=' + d.city }
+    				  .attr('xlink:href', function (d) {
+    					                                                                                return 'https://www.google.com/search?q=' + d.city }
     				  )
            .append('circle')
-           .attr('cx', (d) => {
+           .attr('cx', function (d) {
              return projection([d.lon, d.lat])[0]
            })
-           .attr('cy', (d) => {
+           .attr('cy', function (d) {
              return projection([d.lon, d.lat])[1]
            })
            .attr('r', 5)
@@ -55,7 +55,7 @@ const GeoSpatialChart = React.createClass({
 
     // zoom and pan
     var zoom = d3.behavior.zoom()
-        .on('zoom', () => {
+        .on('zoom', function () {
           g.attr('transform', 'translate(' +
                 d3.event.translate.join(',') + ')scale(' + d3.event.scale + ')')
           g.selectAll('circle')
@@ -64,8 +64,8 @@ const GeoSpatialChart = React.createClass({
                 .attr('d', path.projection(projection))
 
         })
-
-    svg.call(zoom)
+    // svg.call(zoom)
+    return svg
   },
   render () {
     return (
