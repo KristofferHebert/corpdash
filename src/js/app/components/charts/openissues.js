@@ -8,7 +8,13 @@ const OpenIssues = React.createClass({
         issues++
       }
     })
-    issues = (issues === 1) ? issues + ' issue' : issues + ' issues'
+
+    if (issues === 1) {
+      issues = issues + ' issue'
+    } else {
+      issues = issues + ' issues'
+    }
+
     return (
       <h3>Currently {issues} open</h3>
     )

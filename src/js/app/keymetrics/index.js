@@ -1,6 +1,7 @@
 import React from 'react'
 import OpenIssues from '../components/charts/openissues'
 import makeRequest from '../components/utils/makeRequest'
+import LineChart from '../components/charts/linechart'
 
 const KeyMetricsPage = React.createClass({
   getInitialState () {
@@ -46,6 +47,7 @@ const KeyMetricsPage = React.createClass({
       <section>
         <h3>Keymetrics</h3>
         <OpenIssues data={this.state.data} />
+        <LineChart />
       </section>
     )
   }

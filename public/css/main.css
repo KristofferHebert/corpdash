@@ -1,5 +1,5 @@
 .content {
-  min-height: 40em;
+  min-height: 60em;
 }
 
 .table>tbody>tr>td {
@@ -23,10 +23,4 @@
 .table-bordered>thead>tr>td a:hover, .table-bordered>thead>tr>th a:hover {
   font-weight: bold;
   text-decoration: none;
-}
-
-path {
-  stroke: white;
-  stroke-width: 0.25px;
-  fill: grey;
 }
