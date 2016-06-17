@@ -11,7 +11,6 @@ var lineData = [
     strokeDashArray: '5,5'
   }
 ]
-
 const LineChart = React.createClass({
   transformData (data) {
     let values = []
