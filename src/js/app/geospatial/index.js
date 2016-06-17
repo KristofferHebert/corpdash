@@ -1,6 +1,6 @@
 import React from 'react'
-import makeRequest from '../components/utils/makeRequest'
 import GeoSpatialChart from '../components/charts/geospatial'
+import getData from '../components/utils/getdata'
 
 const GeoSpatialPage = React.createClass({
   getInitialState () {
@@ -10,22 +10,15 @@ const GeoSpatialPage = React.createClass({
   },
   componentWillMount () {
     this.getData('geospatial.json')
+      .then((response) => {
+        const data = JSON.parse(response)
+        self.setState({data: data})
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   },
-  getData (url) {
-    let options = {
-      method: 'get'
-    }
-    var self = this
-
-    makeRequest(url, options)
-    .then((response) => {
-      const data = JSON.parse(response)
-      self.setState({data: data})
-    })
-    .catch((e) => {
-      console.log(e)
-    })
-  },
+  getData,
   render () {
     return (
       <section>
