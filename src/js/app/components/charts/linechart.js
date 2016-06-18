@@ -10,11 +10,10 @@ var lineData = [
     strokeWidth: 3,
     strokeDashArray: '5,5'
   }
-]
+
 const LineChart = React.createClass({
   transformData (data) {
     let values = []
-
     data.forEach((d) => {
       if (d.closed !== '') {
         let value = {
