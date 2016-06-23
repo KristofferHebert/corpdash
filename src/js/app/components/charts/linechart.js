@@ -5,11 +5,22 @@ const LnChrt = rd3.LineChart
 var lineData = [
   {
     name: 'Customers over Time',
-    values: [ { x: 1423915030039, y: 11.2 },
-    { x: 1423913330040, y: 2.1 } ],
+    values: [
+    { x: 1436959681000, y: 11 },
+    { x: 1442122919000, y: 9 },
+    { x: 1450703316000, y: 16 },
+    { x: 1459282109000, y: 13 },
+    { x: 1463627239000, y: 10 },
+    { x: 1473627239000, y: 14 },
+    { x: 1483627239000, y: 20 },
+    { x: 1493627239000, y: 14 },
+    { x: 1503627239000, y: 23 },
+    { x: 1513627239000, y: 13 }
+
+    ],
     strokeWidth: 3,
     strokeDashArray: '5,5'
-  }
+  }]
 
 const LineChart = React.createClass({
   transformData (data) {
@@ -45,7 +56,7 @@ const LineChart = React.createClass({
           }
           }
           yAccessor={(d) => d.y}
-          xAxisTickInterval={{unit: 'year', interval: 2}}
+          xAxisTickInterval={{unit: 'month', interval: 4}}
           gridHorizontal={true} />
       </section>
     )

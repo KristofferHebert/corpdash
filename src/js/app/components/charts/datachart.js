@@ -71,6 +71,7 @@ const DataChart = React.createClass({
   },
   parseDate (datestring) {
     if (datestring) {
+      console.log(new Date(datestring).getTime())
       return new Date(datestring).toDateString()
     }
     return null
