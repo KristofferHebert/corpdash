@@ -4,7 +4,11 @@ import React from 'react'
 // inspiration from http://bl.ocks.org/d3noob/5193723 and http://bl.ocks.org/lhoworko/7753a11efc189a936371
 
 const GeoSpatialChart = React.createClass({
+  generateStats (data) {
+    return data.city + ',' + data.country + ' office <br />' + data.num + ' employees'
+  },
   renderChart (width, height) {
+    let self = this
     let projection = d3.geo.mercator()
       .center([0, 5 ])
       .scale(150)
@@ -46,6 +50,18 @@ const GeoSpatialChart = React.createClass({
            })
            .attr('r', 5)
            .style('fill', 'blue')
+           .on('mousemove', function (d) {
+             var mouse = d3.mouse(svg.node()).map(function (d) {
+               return parseInt(d)
+             })
+             tooltip.classed('hidden', false)
+                   .attr('style', 'left:' + (mouse[0] + 15) +
+                           'px; top:' + (mouse[1] + 55) + 'px')
+                   .html(self.generateStats(d))
+           })
+           .on('mouseout', function () {
+             tooltip.classed('hidden', true)
+           })
       })
 
       g.selectAll('path')
