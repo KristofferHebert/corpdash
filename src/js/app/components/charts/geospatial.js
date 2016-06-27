@@ -10,8 +10,8 @@ const GeoSpatialChart = React.createClass({
   renderChart (width, height) {
     let self = this
     let projection = d3.geo.mercator()
-      .center([0, 5 ])
-      .scale(150)
+      .center([0, 5])
+      .scale(160)
       .rotate([-180, 0])
 
     // create chart dom
@@ -22,7 +22,7 @@ const GeoSpatialChart = React.createClass({
 
     // create tooltip
     var tooltip = d3.select(svgdom).append('div')
-    .attr('class', 'hidden tooltip')
+    .attr('class', 'hide tooltip')
 
     let path = d3.geo.path()
       .projection(projection)
@@ -35,33 +35,30 @@ const GeoSpatialChart = React.createClass({
     // load and display the cities from csv
       d3.csv('geo.csv', function (error, data) {
         g.selectAll('circle')
-          .data(data)
-          .enter()
-          .append('a')
-    			.attr('xlink:href', function (d) {
-      return 'https://www.google.com/search?q=' + d.city
-    })
-           .append('circle')
-           .attr('cx', function (d) {
-             return projection([d.lon, d.lat])[0]
-           })
-           .attr('cy', function (d) {
-             return projection([d.lon, d.lat])[1]
-           })
-           .attr('r', 5)
-           .style('fill', 'blue')
-           .on('mousemove', function (d) {
-             var mouse = d3.mouse(svg.node()).map(function (d) {
-               return parseInt(d)
-             })
-             tooltip.classed('hidden', false)
-                   .attr('style', 'left:' + (mouse[0] + 15) +
-                           'px; top:' + (mouse[1] + 55) + 'px')
-                   .html(self.generateStats(d))
-           })
-           .on('mouseout', function () {
-             tooltip.classed('hidden', true)
-           })
+        .data(data)
+        .enter()
+        .append('a')
+        .append('circle')
+        .attr('cx', function (d) {
+          return projection([d.lon, d.lat])[0]
+        })
+        .attr('cy', function (d) {
+          return projection([d.lon, d.lat])[1]
+        })
+        .attr('r', 5)
+        .style('fill', 'blue')
+        .on('mousemove', function (d) {
+          var mouse = d3.mouse(svg.node()).map(function (d) {
+            return parseInt(d)
+          })
+          tooltip.classed('hide', false)
+               .attr('style', 'left:' + (mouse[0] + 15) +
+                       'px; top:' + (mouse[1] + 55) + 'px')
+               .html(self.generateStats(d))
+        })
+        .on('mouseout', function () {
+          tooltip.classed('hide', true)
+        })
       })
 
       g.selectAll('path')

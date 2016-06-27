@@ -33,9 +33,10 @@
   border-radius: 2px;
   opacity: 0.9;
   position: absolute;
+  border: 1px solid gray;
 }
 
-.hidden {
+.hide {
   display: none;
 }
 
