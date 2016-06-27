@@ -12,7 +12,7 @@ Start webpack and compile files on change.
 ```
 npm run compile
 ```
-Start Server in Development mode, restart on code change
+Start Server in Development mode, restart on code change. Runs on port 8000.
 
 ```
 npm run dev
