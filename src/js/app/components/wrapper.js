@@ -7,16 +7,14 @@ const Wrapper = React.createClass({
       <main>
         <nav className='navbar navbar-default' role='banner'>
           <div className='container'>
-            <div className='row'>
-              <div className='col-md-9 col-md-offset-2'>
-                <a href='/' className='navbar-brand'>CorpDash</a>
-                <ul className='nav navbar-nav navbar-right' role='navigation'>
-                  <li><Link activeClassName='active' to='/'>Geospatial</Link></li>
-                  <li><Link activeClassName='active' to='/key-metrics'>Key Metrics</Link></li>
-                  <li><Link activeClassName='active' to='/all-data'>All Data</Link></li>
-                </ul>
-              </div>
+            <div className='navbar-header'>
+              <a href='/' className='navbar-brand'>CorpDash</a>
             </div>
+            <ul className='nav navbar-nav navbar-right' role='navigation'>
+              <li><Link activeClassName='active' to='/'>Geospatial</Link></li>
+              <li><Link activeClassName='active' to='/key-metrics'>Key Metrics</Link></li>
+              <li><Link activeClassName='active' to='/all-data'>All Data</Link></li>
+            </ul>
           </div>
         </nav>
         <section className='container' role='main'>

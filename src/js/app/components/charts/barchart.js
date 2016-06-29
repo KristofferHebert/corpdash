@@ -12,8 +12,12 @@ const BarChart = React.createClass({
     return (
       <BrChrt
         data={this.props.barData}
-        width={600}
-        height={300}
+        viewBoxObject={{
+          x: 0,
+          y: 0,
+          width: 960,
+          height: 500
+        }}
         xAxisLabel='Over Time'
         yAxisLabel='Reported Issues' />
     )

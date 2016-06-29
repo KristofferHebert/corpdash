@@ -31,25 +31,25 @@ const DataChart = React.createClass({
     return (
       <thead className='bg-success'>
         <tr>
-          <td className={'text-center th-header-link th-header-' + navArray[0]} colSpan='1'>
+          <td className={'text-center th-header-link th-header-' + navArray[0]}>
               {navArray[0]}
           </td>
-          <td className={'text-center th-header-link th-header-' + navArray[1]} colSpan='1'>
+          <td className={'text-center th-header-link th-header-' + navArray[1]}>
             <a href='#' onClick={this.props.toggleSort(navArray[1])}>
               {navArray[1]}
             </a>
           </td>
-          <td className={'text-center th-header-link th-header-' + navArray[2]} colSpan='1'>
+          <td className={'text-center th-header-link th-header-' + navArray[2]}>
             <a href='#' onClick={this.props.toggleSort(navArray[2])}>
               {navArray[2]}
             </a>
           </td>
-          <td className={'text-center th-header-link th-header-' + navArray[3]} colSpan='2'>
+          <td className={'text-center th-header-link th-header-' + navArray[3]}>
             <a href='#' onClick={this.props.toggleSort(navArray[3])}>
               {navArray[3]}
             </a>
           </td>
-          <td className={'text-center th-header-link th-header-' + navArray[4]} colSpan='4'>
+          <td className={'text-center th-header-link th-header-' + navArray[4]}>
             <a href='#' onClick={this.props.toggleSort(navArray[4])}>
               {navArray[4]}
             </a>
@@ -79,19 +79,19 @@ const DataChart = React.createClass({
     return (
       <tbody key={Date.now() + i}>
         <tr>
-          <td className='text-center' colSpan='1'>
+          <td className='text-center'>
             <p>{row.id}</p>
           </td>
-          <td className='text-center' colSpan='1'>
+          <td className='text-center'>
             <p>{row.customer_name}</p>
           </td>
-          <td className='text-center' colSpan='1'>
+          <td className='text-center'>
             <p>{row.customer_email}</p>
           </td>
-          <td className='text-center' colSpan='2'>
+          <td className='text-center'>
             <p>{this.parseDate(row.submission)}</p>
           </td>
-          <td className='text-center' colSpan='4'>
+          <td className='text-center'>
             <p>{row.description}</p>
           </td>
           <td className='text-center'>

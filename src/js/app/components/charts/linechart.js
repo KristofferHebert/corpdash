@@ -35,15 +35,15 @@ const LineChart = React.createClass({
     } else {
       return (
         <section>
+          <hr />
+          <h3>Customers over Time</h3>
           <LnChrt
-            legend={true}
-            width='100%'
-            height={400}
+            legend={false}
             viewBoxObject={{
               x: 0,
               y: 0,
-              width: 550,
-              height: 400
+              width: 960,
+              height: 500
             }}
             yAxisLabel='Customers'
             xAxisLabel='Time'
