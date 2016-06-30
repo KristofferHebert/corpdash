@@ -18,7 +18,10 @@ const DataChart = React.createClass({
         <form className='form-inline pull-right toggle-filter-container'>
           <fieldset className='form-group'>
             <label htmlFor='toggleFilter'>Filter by:</label>
-              <select id='toggleFilter' className='form-control' onChange={this.props.toggleFilter} value={this.props.currentFilter}>
+              <select id='toggleFilter'
+                className='form-control'
+                onChange={this.props.toggleFilter}
+                value={this.props.currentFilter}>
                 {options}
               </select>
           </fieldset>
