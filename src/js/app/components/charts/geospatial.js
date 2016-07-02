@@ -7,6 +7,17 @@ const GeoSpatialChart = React.createClass({
   generateStats (data) {
     return data.city + ',' + data.country + ' office <br />' + data.num + ' employees'
   },
+  pollData () {
+    this.timer = setInterval(() => {
+      this.checkForNewData('/geo')
+    }, 5000)
+  },
+  componentDidMount () {
+    this.pollData()
+  },
+  checkForNewData () {
+    console.log('Geospatial data fetched')
+  },
   renderChart (width, height) {
     let self = this
     let projection = d3.geo.mercator()

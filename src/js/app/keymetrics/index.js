@@ -13,7 +13,18 @@ const KeyMetricsPage = React.createClass({
   },
   componentWillMount () {
     this.getData('/data')
-    this.getBarData('/reported')
+    this.getBarData('reported')
+  },
+  pollData () {
+    this.timer = setInterval(() => {
+      this.getBarData('reported')
+    }, 5000)
+  },
+  componentDidMount () {
+    this.pollData()
+  },
+  componentWillUnmount: function () {
+    clearInterval(this.timer)
   },
   csvToCollection (csv) {
     return csv.splice(1)
@@ -55,6 +66,7 @@ const KeyMetricsPage = React.createClass({
     .then((response) => {
       const barData = JSON.parse(response)
       self.setState({barData: barData.data})
+      console.log('bar chart fetched')
     })
     .catch((e) => {
       console.log(e)

@@ -1,6 +1,7 @@
 import React from 'react'
 import rd3 from 'rd3'
 import makeRequest from '../utils/makeRequest'
+import ReactTimeout from 'react-timeout'
 
 const LnChrt = rd3.LineChart
 
@@ -13,8 +14,18 @@ const LineChart = React.createClass({
   componentWillMount () {
     this.getLineChartData('/metrics')
   },
+  pollData () {
+    this.timer = setInterval(() => {
+      this.getLineChartData('/metrics')
+    }, 5000)
+  },
+  componentDidMount () {
+    this.pollData()
+  },
+  componentWillUnmount: function () {
+    clearInterval(this.timer)
+  },
   getLineChartData (url) {
-
     let options = {
       method: 'get'
     }
@@ -24,6 +35,7 @@ const LineChart = React.createClass({
     .then((response) => {
       let lineData = JSON.parse(response)
       self.setState({lineData: lineData.data })
+      console.log('line data fetched')
     })
     .catch((e) => {
       console.log(e)

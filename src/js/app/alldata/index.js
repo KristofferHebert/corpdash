@@ -95,10 +95,22 @@ const AllDataPage = React.createClass({
     .then((response) => {
       const csv = Papa.parse(response)
       self.setState({data: self.csvToCollection(csv.data)})
+      console.log('data table fetched')
     })
     .catch((e) => {
       console.log(e)
     })
+  },
+  pollData () {
+    this.timer = setInterval(() => {
+      this.getData('/data')
+    }, 5000)
+  },
+  componentDidMount () {
+    this.pollData()
+  },
+  componentWillUnmount: function () {
+    clearInterval(this.timer)
   },
   render () {
     return (
