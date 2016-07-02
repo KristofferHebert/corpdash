@@ -103,13 +103,15 @@ const AllDataPage = React.createClass({
   render () {
     return (
       <section>
-          <DataChart
-            data={this.applySort(this.state.currentSort, this.applyFilter(this.state.currentFilter, this.state.data))}
-            nav={this.state.nav}
-            toggleSort={this.toggleSort}
-            toggleFilter={this.toggleFilter}
-            filters={this.state.filters}
-            currentFilter={this.state.currentFilter} />
+          <section className='overflow'>
+            <DataChart
+              data={this.applySort(this.state.currentSort, this.applyFilter(this.state.currentFilter, this.state.data))}
+              nav={this.state.nav}
+              toggleSort={this.toggleSort}
+              toggleFilter={this.toggleFilter}
+              filters={this.state.filters}
+              currentFilter={this.state.currentFilter} />
+          </section>
       </section>
     )
   }
