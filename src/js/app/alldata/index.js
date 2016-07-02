@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 const AllDataPage = React.createClass({
   componentWillMount () {
-    this.getData('data.csv')
+    this.getData('/data')
   },
   toggleSort (sort) {
     return (e) => {

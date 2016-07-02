@@ -12,8 +12,8 @@ const KeyMetricsPage = React.createClass({
     }
   },
   componentWillMount () {
-    this.getData('data.csv')
-    this.getBarData('reported.json')
+    this.getData('/data')
+    this.getBarData('/reported')
   },
   csvToCollection (csv) {
     return csv.splice(1)

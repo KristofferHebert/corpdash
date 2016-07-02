@@ -33,7 +33,7 @@ const GeoSpatialChart = React.createClass({
     d3.json('world.json', function (error, topology) {
 
     // load and display the cities from csv
-      d3.csv('geo.csv', function (error, data) {
+      d3.csv('/geo', function (error, data) {
         g.selectAll('circle')
         .data(data)
         .enter()

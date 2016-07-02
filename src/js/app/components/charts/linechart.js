@@ -11,7 +11,7 @@ const LineChart = React.createClass({
     }
   },
   componentWillMount () {
-    this.getLineChartData('metrics.json')
+    this.getLineChartData('/metrics')
   },
   getLineChartData (url) {
 
