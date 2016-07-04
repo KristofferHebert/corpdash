@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const root = path.resolve('./')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: root + '/src/js/app.js',
@@ -17,8 +18,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.js$/,
         loader: 'babel',
         exclude: /(node_modules|bower_components)/,
         query: {
@@ -27,5 +28,8 @@ module.exports = {
       }
     ],
     noParse: ['react', 'lodash']
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('./src/css/main.css')
+  ]
 }
