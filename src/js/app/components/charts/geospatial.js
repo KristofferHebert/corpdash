@@ -12,11 +12,12 @@ const GeoSpatialChart = React.createClass({
       this.checkForNewData('/geo')
     }, 5000)
   },
-  componentDidMount () {
-    this.pollData()
+  componentWillUnmount: function () {
+    clearInterval(this.timer)
   },
   checkForNewData () {
-    console.log('Geospatial data fetched')
+    this.renderChart()
+    console.log('geospatial chart fetched')
   },
   renderChart (width, height) {
     let self = this
@@ -27,12 +28,12 @@ const GeoSpatialChart = React.createClass({
 
     // create chart dom
     let svgdom = this.refs.geo
-    let svg = d3.select(svgdom).append('svg')
+    let svg = d3.select(svgdom)
       .attr('width', width)
       .attr('height', height)
 
     // create tooltip
-    var tooltip = d3.select(svgdom).append('div')
+    var tooltip = d3.select('#geo-container').append('div')
     .attr('class', 'hide tooltip')
 
     let path = d3.geo.path()
@@ -64,7 +65,7 @@ const GeoSpatialChart = React.createClass({
           })
           tooltip.classed('hide', false)
                .attr('style', 'left:' + (mouse[0] + 15) +
-                       'px; top:' + (mouse[1] + 55) + 'px')
+                       'px; top:' + (mouse[1] + 5) + 'px')
                .html(self.generateStats(d))
         })
         .on('mouseout', function () {
@@ -95,13 +96,16 @@ const GeoSpatialChart = React.createClass({
   },
   componentDidMount () {
     this.renderChart()
+    this.pollData()
   },
   componentDidUpdate () {
     this.renderChart()
   },
   render () {
     return (
-      <section id='geo' ref='geo'></section>
+      <section id='geo-container'>
+        <svg id='geo' ref='geo'></svg>
+      </section>
     )
   }
 })

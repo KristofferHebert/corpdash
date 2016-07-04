@@ -12,12 +12,13 @@ const KeyMetricsPage = React.createClass({
     }
   },
   componentWillMount () {
-    this.getData('/data')
+    this.getOpenIssueData('/data')
     this.getBarData('reported')
   },
   pollData () {
     this.timer = setInterval(() => {
       this.getBarData('reported')
+      this.getOpenIssueData('/data')
     }, 5000)
   },
   componentDidMount () {
@@ -41,7 +42,7 @@ const KeyMetricsPage = React.createClass({
         }
       })
   },
-  getData (url) {
+  getOpenIssueData (url) {
     let options = {
       method: 'get'
     }
@@ -51,6 +52,7 @@ const KeyMetricsPage = React.createClass({
     .then((response) => {
       const csv = Papa.parse(response)
       self.setState({data: self.csvToCollection(csv.data)})
+      console.log('open issues data updated')
     })
     .catch((e) => {
       console.log(e)
@@ -66,7 +68,7 @@ const KeyMetricsPage = React.createClass({
     .then((response) => {
       const barData = JSON.parse(response)
       self.setState({barData: barData.data})
-      console.log('bar chart fetched')
+      console.log('bar chart updated')
     })
     .catch((e) => {
       console.log(e)

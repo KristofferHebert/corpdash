@@ -37,8 +37,9 @@
     opacity: .9;
     position: absolute;
     border: 1px solid gray;
+    z-index: 999;
 }
-#geo svg {
+svg#geo {
     height: 500px!important;
 }
 #geo path {

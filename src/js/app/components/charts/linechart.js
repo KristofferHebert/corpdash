@@ -35,7 +35,7 @@ const LineChart = React.createClass({
     .then((response) => {
       let lineData = JSON.parse(response)
       self.setState({lineData: lineData.data })
-      console.log('line data fetched')
+      console.log('line data updated')
     })
     .catch((e) => {
       console.log(e)
